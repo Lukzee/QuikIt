@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QuickIt</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="setcode();">
+    <div>
+        <div id="title">
+            <h1 class="title"><span class="b">Qu</span><span class="m">ik</span><span class="e">It</span></h1>
+        </div>
+        
+        <div class="wrap-all">
+            <div class="code-bar">
+                <a href="#" onclick="dbcode();">Database</a>
+                <a href="#" onclick="ptcode();">Post</a>
+                <a href="#" onclick="getcode();">Get</a>
+                <a href="#">Update</a>
+                <a href="#">Delete</a>
+                <a href="#" onclick="protectcode();">Protect</a>
+                <a href="#" onclick="regcode();">Registration</a>
+                <a href="#">Log In</a>
+                <a href="#">Log Out</a>
+                <a href="#">Authentication</a>
+            </div>
+
+            <div class="wrap">
+                <div class="container-fluid">
+                    <form action="">
+                        <label class="label" id="label" for="content">Create Php Api</label><br>
+
+                        <textarea class="form-control" id="content" cols="20" rows="15"></textarea><br>
+
+                        <input type="button" class="btn-set" onclick="create();" id="btnCreate" value="Save">
+
+                        <input type="button" class="btn-set" onclick="readfile();" id="btnRead" value="Read">
+
+                        <input type="button" class="btn-set" onclick="clearit();" id="btnClear" value="Clear">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function setcode() {
+            // database code
+            let db = "<?php   class database {    private $server = 'localhost';    private $db_name = 'my_db';   private $user = 'root';    private $pass = '';    private $conn;    public function connect() {    $this->conn = null;   try {    $this->conn = new PDO('mysql:host=' .$this->server. ';dbname=' .$this->db_name, $this->user, $this->pass);     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    } catch(PDOException $e) {       echo 'Connection Error: '.$e->getMessage();    }   return $this->conn;   }   }   ?>";
+
+            localStorage.setItem('db', JSON.stringify( db ) );
+
+
+            // get code
+            let gt = "<?php     class Get_post {      private $conn;      private $table = 'table1';      public $id;      public $category;       public $post;       public function __construct($db)      {      $this->conn = $db;      }       public function read() {      $ql = 'SELECT * FROM ' .$this->table. ' ORDER BY id DESC';      $stmt = $this->conn->prepare($ql);      $stmt->execute();      return $stmt;      }        }";
+
+            localStorage.setItem('getcode', JSON.stringify( gt ) );
+
+            // post code
+            let pt = "class post_Data {      private $conn;      private $table = 'table1';      public $id;      public $category;       public $post;      public function create() {      $ql = 'INSERT INTO ' . $this->table . '     SET     category = :category,       post = :post';      $stmt = $this->conn->prepare($ql);       $this->category = htmlspecialchars(htmlentities(strip_tags($this->category)));        $this->post = htmlspecialchars(htmlentities(strip_tags($this->post)));      $stmt->bindParam('category', $this->category);       $stmt->bindParam('post', $this->post);       if($stmt->execute()) {        return true;        }      printf('Error: %s.\n', $stmt->error);        return false;        }      }";
+
+            localStorage.setItem('pstcode', JSON.stringify( pt ) );
+
+            // protect code
+            let protect = "public function protect($string) {         $string = htmlspecialchars(htmlentities(strip_tags(mysqli_real_escape_string($this->conn, $string))));         return $string;          }";
+
+            localStorage.setItem('prott', JSON.stringify( protect ) );
+
+            // reg code
+            let reg = "<?php      class reg_User {      private $conn;       private $reg_Table = 'Registration';       public $fName;        public $lName;        public $userName;       public $password;       public function __construct($db) {        $this->conn = $db;        }       public function Register() {       $ql = 'INSERT INTO ' . $this->reg_Table . '       SET        fName = :fName,      lName = :lName,       userName = :userName,       password = :password';       $stmt = $this->conn->prepare($ql);       $this->fName = htmlspecialchars(htmlentities(strip_tags($this->fName)));       $this->lName = htmlspecialchars(htmlentities(strip_tags($this->lName)));       $this->userName = htmlspecialchars(htmlentities(strip_tags($this->userName)));      $this->password = htmlspecialchars(htmlentities(strip_tags($this->password)));       $stmt->bindParam('fName', $this->fName);        $stmt->bindParam('lName', $this->lName);       $stmt->bindParam('userName', $this->userName);        $stmt->bindParam('password', $this->password);       if($stmt->execute()) {       return true;      }       printf('Error: %s.\n', $stmt->error);       return false;       }        }";
+
+            localStorage.setItem('rcode', JSON.stringify( reg ) );
+        };
+
+        // reg code
+        function regcode() {
+            rg = JSON.parse( localStorage.getItem('rcode'));
+            fileContent.value += rg;
+        };
+
+        // protect btn
+        function protectcode() {
+            prot = JSON.parse( localStorage.getItem('prott'));
+            fileContent.value += prot;
+        };
+
+        // post btn
+        function ptcode() {
+            pt = JSON.parse( localStorage.getItem('pstcode'));
+            fileContent.value += pt;
+        };
+
+        // db btn
+        function dbcode() {
+            db = JSON.parse( localStorage.getItem('db'));
+            fileContent.value += db;
+        };
+
+        // get btn
+        function getcode() {
+            gt = JSON.parse( localStorage.getItem('getcode'));
+            fileContent.value += gt;
+        };
+
+        // file module
+        const fs = require('fs');
+        // dialog module
+        const {dialog} = require("electron").remote;
+
+        fileContent = document.getElementById('content');
+
+        function create() {
+            let content = fileContent.value;
+
+            dialog.showSaveDialog((file) => {
+                if(file === undefined){
+                    alert("Undefined file name");
+                    return;
+                }
+
+                fs.writeFile(file, content, (err) => {
+                if (err){
+                    alert("Error creating file");
+                    return;
+                }
+
+                alert("File created successfuly");
+                });
+            });
+        };
+
+        function readfile(){
+
+            dialog.showOpenDialog((fileName) => {
+                if(fileName === undefined){
+                    alert("No file selected");
+                    return;
+                }
+
+                fs.readFile(fileName[0], "utf-8", (err, data) => {
+                    if(err){
+                        alert("Unable to open file");
+                        return;
+                    }
+
+                    fileContent.value = data;
+                });
+            });
+        };
+
+        function clearit() {
+            fileContent.value = "";
+        }
+    </script>
+</body>
+</html>

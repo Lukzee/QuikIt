@@ -1,0 +1,113 @@
+span.b {
+    color: red;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+span.m {
+    color: blue;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+span.e {
+    color: red;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid red;
+}
+
+.title {
+    text-align: center;
+}
+
+#title {
+    padding-bottom: 0.3%;
+    background-color: rgb(22, 22, 22);
+}
+
+.container-fluid {
+    text-align: center;
+    font-size: 30px;
+    font-family: monospace;
+    color: white;
+    margin-top: 5%;
+}
+
+.btn-set {
+    width: 20%;
+    padding: 3px 9px;
+    margin: 10px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(43, 37, 37);
+    border: 1px solid rgb(43, 37, 37);
+    border-radius: 2%;
+}
+
+.btn-set:hover {
+    background-color: black;
+    color: red;
+}
+
+.btn-set:active {
+    border: none;
+}
+
+textarea {
+    resize: none;
+}
+
+#content {
+    background-color: rgb(37, 35, 35);
+    color: white;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.code-bar {
+    height: 100%;
+    width: 230px;
+    text-align: left;
+    background-color: blue;
+    font-size: 23px;
+    overflow: hidden;
+}
+
+.code-bar a {
+    padding: 16px;
+    display: block;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.code-bar a:hover {
+    background-color: black;
+    color: red;
+    text-decoration: none;
+}
+
+.wrap {
+    width: 60%;
+    margin: 3%;
+    margin-left: 4%;
+}
+
+.wrap-all {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+}
+
+#label {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 400;
+}
