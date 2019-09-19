@@ -14,7 +14,7 @@ app.on('ready', function(){
         webPreferences: {
             nodeIntegration: true
         },
-        icon:__dirname+'/img/myIcon.png'
+        icon:__dirname+'/img/quick.jpg'
     });
 
     // load index.html
