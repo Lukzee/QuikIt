@@ -14,7 +14,7 @@ app.on('ready', function(){
         webPreferences: {
             nodeIntegration: true
         },
-        icon:__dirname+'/img/quick.jpg'
+        icon:__dirname+'/img/Grap.jpg'
     });
 
     // load index.html
