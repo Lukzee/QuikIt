@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onload="setcode();" onloadstart="myFunction();">
+<body onload="setcode();">
     <div>
         <div id="title">
             <h1 class="title"><span class="b">Qu</span><span class="m">ik</span><span class="e">It</span></h1>
@@ -61,17 +61,18 @@
     </div>
 
     <script>
-        var myVar;
-
-        function myFunction() {
-            document.getElementById("q_loader").style.display = "block";
-        }
-
-        function cancel() {
-            document.getElementById("q_loader").style.display = "none";
-        }
-
         function setcode() {
+            // Pop up
+            var myVar;
+
+            function myFunction() {
+                document.getElementById("q_loader").style.display = "block";
+            }
+
+            function cancel() {
+                document.getElementById("q_loader").style.display = "none";
+            }
+
             // database code
             let db = "<?php   class database {    private $server = 'localhost';    private $db_name = 'my_db';   private $user = 'root';    private $pass = '';    private $conn;    public function connect() {    $this->conn = null;   try {    $this->conn = new PDO('mysql:host=' .$this->server. ';dbname=' .$this->db_name, $this->user, $this->pass);     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    } catch(PDOException $e) {       echo 'Connection Error: '.$e->getMessage();    }   return $this->conn;   }   }   ?>";
 
