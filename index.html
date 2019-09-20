@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onload="setcode();">
+<body onload="setcode();" onloadstart="myFunction();">
     <div>
         <div id="title">
             <h1 class="title"><span class="b">Qu</span><span class="m">ik</span><span class="e">It</span></h1>
@@ -45,7 +45,32 @@
             </div>
         </div>
     </div>
+
+    <div id="q_loader">
+        <div class="pos">
+            <div class="wrap_load">
+                <div class="q_popup">
+                    <img src="global.jpg" alt="" width="100%">
+
+                    <p><marquee behavior="scroll" direction="left">HawaGlobal Software</marquee></p>
+                </div>
+
+                <a href="#" class="mybtn" onclick="cancel();">START</a>
+            </div>
+        </div>
+    </div>
+
     <script>
+        var myVar;
+
+        function myFunction() {
+            document.getElementById("q_loader").style.display = "block";
+        }
+
+        function cancel() {
+            document.getElementById("q_loader").style.display = "none";
+        }
+
         function setcode() {
             // database code
             let db = "<?php   class database {    private $server = 'localhost';    private $db_name = 'my_db';   private $user = 'root';    private $pass = '';    private $conn;    public function connect() {    $this->conn = null;   try {    $this->conn = new PDO('mysql:host=' .$this->server. ';dbname=' .$this->db_name, $this->user, $this->pass);     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    } catch(PDOException $e) {       echo 'Connection Error: '.$e->getMessage();    }   return $this->conn;   }   }   ?>";
