@@ -46,30 +46,32 @@
         </div>
     </div>
 
-    <div id="q_loader">
-        <div class="pos">
-            <div class="wrap_load">
-                <div class="q_popup">
-                    <img src="img/global.jpg" alt="" width="100%">
+    <div id="q_loader" style="display: none;">
+        <div id="q_loader2">
+            <div class="pos">
+                <div class="wrap_load">
+                    <div class="q_popup">
+                        <img src="img/global.jpg" alt="" width="100%">
 
-                    <p><marquee behavior="scroll" direction="left">HawaGlobal Software</marquee></p>
+                        <p><marquee behavior="scroll" direction="left">HawaGlobal Software</marquee></p>
+                    </div>
+
+                    <a href="#" class="mybtn" onclick="cancel();">START</a>
                 </div>
-
-                <a href="#" class="mybtn" onclick="cancel();">START</a>
             </div>
         </div>
     </div>
 
     <script>
+        function cancel() {
+            document.getElementById("q_loader").style.display = "none";
+        }
+
         function setcode() {
             // Pop up
             var myVar;
 
             document.getElementById("q_loader").style.display = "block";
-            
-            function cancel() {
-                document.getElementById("q_loader").style.display = "none";
-            }
 
             // database code
             let db = "<?php   class database {    private $server = 'localhost';    private $db_name = 'my_db';   private $user = 'root';    private $pass = '';    private $conn;    public function connect() {    $this->conn = null;   try {    $this->conn = new PDO('mysql:host=' .$this->server. ';dbname=' .$this->db_name, $this->user, $this->pass);     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    } catch(PDOException $e) {       echo 'Connection Error: '.$e->getMessage();    }   return $this->conn;   }   }   ?>";
