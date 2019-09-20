@@ -46,11 +46,11 @@
         </div>
     </div>
 
-    <div id="q_loader" onload="myFunction();">
+    <div id="q_loader">
         <div class="pos">
             <div class="wrap_load">
                 <div class="q_popup">
-                    <img src="global.jpg" alt="" width="100%">
+                    <img src="img/global.jpg" alt="" width="100%">
 
                     <p><marquee behavior="scroll" direction="left">HawaGlobal Software</marquee></p>
                 </div>
@@ -65,10 +65,8 @@
             // Pop up
             var myVar;
 
-            function myFunction() {
-                document.getElementById("q_loader").style.display = "block";
-            }
-
+            document.getElementById("q_loader").style.display = "block";
+            
             function cancel() {
                 document.getElementById("q_loader").style.display = "none";
             }

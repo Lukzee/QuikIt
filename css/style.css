@@ -117,6 +117,7 @@ a {
     height: 100%;
     position: relative;
     text-align: center;
+    display: none;
 }
 
 .pos {
