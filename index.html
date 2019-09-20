@@ -20,7 +20,7 @@
                 <a href="#" onclick="ptcode();">Post</a>
                 <a href="#" onclick="getcode();">Get</a>
                 <a href="#" onclick="update();">Update</a>
-                <a href="#">Delete</a>
+                <a href="#" onclick="delet();">Delete</a>
                 <a href="#" onclick="protectcode();">Protect</a>
                 <a href="#" onclick="regcode();">Registration</a>
                 <a href="#">Log In</a>
@@ -77,15 +77,26 @@
             let updt = "class post_Data {      private $conn;      private $table = 'table1';      public $id;      public $category;       public $post;       public function update() {      $ql = 'UPDATE ' .       $this->table . '      SET       category = :category,      post = :post       WHERE       id = :id';       $stmt = $this->conn->prepare($ql);       $this->category = htmlspecialchars(htmlentities(strip_tags($this->category)));      $this->post = htmlspecialchars(htmlentities(strip_tags($this->post)));       $this->id = htmlspecialchars(htmlentities(strip_tags($this->id)));       $stmt->bindParam(':category', $this->category);      $stmt->bindParam(':post', $this->post);      $stmt->bindParam(':id', $this->id);       if($stmt->execute()) {       return true;     }      printf('Error: %s.\n', $stmt->error);       return false;       }       }";
 
             localStorage.setItem('upd', JSON.stringify( updt ) );
+
+            // delete code
+            let del = "<?php       class post_delete {       private $conn;       private $table = 'table1';        public $id;       public $category;        public $post;       public function __construct($db)       {       $this->conn = $db;        }        public function delete() {        $ql = 'DELETE FROM ' . $this->table . ' WHERE id = :id';       $stmt = $this->conn->prepare($ql);        $this->id = htmlspecialchars(htmlentities(strip_tags($this->id)));        $stmt->bindParam(':id', $this->id);         if($stmt->execute()) {       return true;      }       printf('Error: %s.\n', $stmt->error);       return false;        }         }";
+
+            localStorage.setItem('del', JSON.stringify( del ) );
         };
 
-        // update code
+        // delete btn
+        function delet() {
+            dell = JSON.parse( localStorage.getItem('del'));
+            fileContent.value += dell;
+        }
+        
+        // update btn
         function update() {
             up = JSON.parse( localStorage.getItem('upd'));
             fileContent.value += up;
         }
 
-        // reg code
+        // reg btn
         function regcode() {
             rg = JSON.parse( localStorage.getItem('rcode'));
             fileContent.value += rg;
