@@ -165,6 +165,8 @@ a {
     position: relative;
     border-radius: 3px;
     border: 0px;
+    padding-left: 1%;
+    padding-right: 1%;
     overflow: hidden;
 }
 
@@ -186,7 +188,7 @@ a:hover {
     border: rgb(43, 37, 37);
     padding: 1%;
     position: absolute;
-    bottom: 20%;
+    bottom: 16%;
     left: 43%;
 }
 
@@ -194,4 +196,38 @@ a:hover {
     text-decoration: none;
     background-color: black;
     color: red;
+}
+
+.txt {
+    position: absolute;
+    top: 48%;
+    font-size: 20px;
+    color: white;
+}
+
+.r {
+    color: red;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.bl {
+    color: blue;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.wh {
+    color: red;
+    font-size: 15px;
+    padding: 1px;
+    border: 1px solid red;
+    background-color: white;
+    border-radius: 50%;
+    font-family: monospace;
+}
+
+.black {
+    color: red;
+    font-weight: 500;
 }
