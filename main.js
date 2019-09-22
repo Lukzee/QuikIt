@@ -9,8 +9,8 @@ let win;
 app.on('ready', function(){
     // create browser window
     win = new BrowserWindow({
-        width:900,
-        height:900,
+        width:1000,
+        height:1000,
         webPreferences: {
             nodeIntegration: true
         },

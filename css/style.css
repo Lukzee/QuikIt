@@ -143,9 +143,6 @@ a {
 .q_popup {
     width: 15%;
     height: auto;
-    font-size: 200%;
-    font-weight: bold;
-    font-family: monospace;
     background-color: rgb(7, 7, 7);
     color: blue;
     padding: 2%;
@@ -155,6 +152,7 @@ a {
     position: absolute;
     top: 2%;
     right: 40.1%;
+    overflow: hidden;
 }
 
 .wrap_load {
@@ -230,4 +228,8 @@ a:hover {
 .black {
     color: red;
     font-weight: 500;
+}
+
+#cName {
+    font-size: 100%;
 }
