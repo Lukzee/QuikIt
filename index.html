@@ -50,25 +50,40 @@
         <div id="q_loader2">
             <div class="pos">
                 <div class="wrap_load">
-                    <div class="q_popup">
-                        <img src="img/global.jpg" alt="" width="100%">
+                    <div id="vid" style="display: none;">
+                        <figure>
+                            <video controls width="50%" height="50%"><source src="video/viddoc.mp4" type="video/mp4">Video Documentation</video>
 
-                        <p id="cName">HawaGlobal Software</p>
+                            <figCaption><h4>Watch our Video Documentation above. <a href="#">Click here to go back.....</a></h4></figCaption>
+                        </figure>
                     </div>
+                    <div id="hide">
+                        <div class="q_popup">
+                            <img src="img/global.jpg" alt="" width="100%">
 
-                    <div class="txt">
-                        <p><strong><span class="r">Qu</span><span class="bl">ik</span><span class="wh">It</span></strong> is a <strong class="black">Php Framework</strong>&comma; it is designed and powered by <strong class="black">HawaGlobal Software</strong>&comma; and license by <strong class="black">ISC&period;</strong>
-                        <br>
-                        This Framework help's to make your work faster&comma; it is specially designed for Php lovers, whelther Expert or Begginers&period; <a href="#">Check our video Documentation...</a></p>
+                            <p id="cName">HawaGlobal Software</p>
+                        </div>
+
+                        <div class="txt">
+                            <p><strong><span class="r">Qu</span><span class="bl">ik</span><span class="wh">It</span></strong> is a <strong class="black">Php Framework</strong>&comma; it is designed and powered by <strong class="black">HawaGlobal Software</strong>&comma; and license by <strong class="black">ISC&period;</strong>
+                            <br>
+                            This Framework help's to make your work faster&comma; it is specially designed for Php lovers, whelther Expert or Begginers&period; <a href="#" onclick="showvid();">Check our video Documentation...</a></p>
+                        </div>
+
+                        <a href="#" class="mybtn" onclick="cancel();">Start</a>
                     </div>
-
-                    <a href="#" class="mybtn" onclick="cancel();">Start</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        // show video
+        function showvid() {
+            document.getElementById("hide").style.display = "none";
+            document.getElementById("vid").style.display = "block";
+        }
+
         function cancel() {
             document.getElementById("q_loader").style.display = "none";
         }
