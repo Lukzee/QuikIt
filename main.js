@@ -50,7 +50,8 @@ const mainmenuTemp = [
     {
         label: 'Veiw',
         submenu: [
-            { role: 'Reload'}
+            { role: 'Reload'},
+            { role: 'Quit'}
         ]
     },
     {
