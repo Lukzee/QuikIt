@@ -52,9 +52,9 @@
                 <div class="wrap_load">
                     <div id="vid" style="display: none;">
                         <figure>
-                            <video controls width="50%" height="50%"><source src="video/viddoc.mp4" type="video/mp4">Video Documentation</video>
+                            <video controls width="70%" height="70%"><source src="video/viddoc.mp4" type="video/mp4">Video Documentation</video>
 
-                            <figCaption><h4>Watch our Video Documentation above. <a href="#">Click here to go back.....</a></h4></figCaption>
+                            <figCaption><h5>Watch our offline Video Documentation above. <a href="#" onclick="back();">Click here to go back.....</a></h5></figCaption>
                         </figure>
                     </div>
                     <div id="hide">
@@ -84,14 +84,19 @@
             document.getElementById("vid").style.display = "block";
         }
 
+        // hide video
+        function back() {
+            document.getElementById("vid").style.display = "none";
+            document.getElementById("hide").style.display = "block";
+        }
+
+        // show working environment
         function cancel() {
             document.getElementById("q_loader").style.display = "none";
         }
 
         function setcode() {
-            // Pop up
-            var myVar;
-
+            // pop up
             document.getElementById("q_loader").style.display = "block";
 
             // database code
