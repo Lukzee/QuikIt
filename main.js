@@ -48,24 +48,20 @@ app.on('window-all-closed', () => {
 // create menu temp
 const mainmenuTemp = [
     {
-        label:'Edit',
-        submenu: [
-            { role: 'Redo'},
-            { role: 'Undo'},
-            { role: 'Selectall'}
-        ]
-    },
-    {
-        label:'Veiw',
+        label: 'Veiw',
         submenu: [
             { role: 'Reload'}
         ]
     },
     {
-        label:'Help',
+        label: 'Help',
         submenu: [
-            { role: 'Report bug'},
-            { role: 'Comment'}
+            {
+                label: 'Report bug'
+            },
+            {
+                label: 'Comment'
+            }
         ]
     }
 ];
