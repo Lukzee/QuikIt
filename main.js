@@ -40,7 +40,7 @@ app.on('ready', function(){
 //quit when all window are closed
 
 app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin'){
+    if(process.platform == 'win32'){
         app.quit();
     }
 });
@@ -50,17 +50,22 @@ const mainmenuTemp = [
     {
         label:'Edit',
         submenu: [
-            { role: 'Save'},
-            { role: 'exit'}
+            { role: 'Redo'},
+            { role: 'Undo'},
+            { role: 'Selectall'}
         ]
     },
     {
         label:'Veiw',
         submenu: [
-            { role: 'reload'},
-            { role: 'undo'},
-            { role: 'redo'},
-            { role: 'selectall'}
+            { role: 'Reload'}
+        ]
+    },
+    {
+        label:'Help',
+        submenu: [
+            { role: 'Report bug'},
+            { role: 'Comment'}
         ]
     }
 ];
