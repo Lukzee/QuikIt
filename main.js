@@ -51,7 +51,7 @@ const mainmenuTemp = [
         label: 'Veiw',
         submenu: [
             { role: 'Reload'},
-            { role: 'Exit'}
+            { role: 'Quit'}
         ]
     },
     {
