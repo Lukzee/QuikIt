@@ -1,6 +1,11 @@
-const {app, BrowserWindow, Menu} = require('electron');
+const electron = require('electron');
 const path = require('path');
 const url = require('url');
+
+const {app, BrowserWindow, Menu} = electron;
+
+// Set environment
+process.env.NODE_ENV = 'production';
 
 // init win
 let win;
@@ -24,9 +29,6 @@ app.on('ready', function(){
         slashes: true
     }));
 
-    // open devtools
-    win.webContents.openDevTools();
-
     win.on('closed', () => {
         win = null;
     });
@@ -38,9 +40,8 @@ app.on('ready', function(){
 });
 
 //quit when all window are closed
-
 app.on('window-all-closed', () => {
-    if(process.platform == 'win32'){
+    if(process.platform !== 'darwin'){
         app.quit();
     }
 });
@@ -66,3 +67,24 @@ const mainmenuTemp = [
         ]
     }
 ];
+
+// if mac, add empty object to menu
+if(process.platform == 'darwin') {
+    mainmenuTemp.unshift({});
+}
+
+// add developer tools item if not in prod
+if(process.env.NODE_ENV !== 'production') {
+    mainmenuTemp.push({
+        label: 'Developer Tools',
+        submenu:[
+            {
+                label: 'Toggle DevTools',
+                accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+                click(item, focusedWindow){
+                    focusedWindow.toggleDevTools();
+                }
+            }
+        ]
+    })
+}
