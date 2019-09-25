@@ -59,10 +59,10 @@ const mainmenuTemp = [
         label: 'Help',
         submenu: [
             {
-                label: 'Report bug'
-            },
-            {
-                label: 'Comment'
+                label: 'Report bug',
+                click: function() {
+                    electron.shell.openExternal('https://github.com/Lukzee/QuikIt/issues')
+                }
             }
         ]
     }
